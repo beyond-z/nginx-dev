@@ -1,0 +1,24 @@
+version: '3'
+services:
+  nginx_dev:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    networks:
+      - rubycas-server_frontend
+      - canvas-lms_frontend
+      - beyondz-platform_frontend
+
+networks:
+  # Bind to the external networks so that nginx can talk to the other using their 
+  # service names as hostnames. E.g. from inside the nginx container, the hostname ssoweb 
+  # needs to resolve to the ssoweb container.
+  rubycas-server_frontend:
+    external: true
+  canvas-lms_frontend:
+    external: true
+  beyondz-platform_frontend:
+    external: true
+
