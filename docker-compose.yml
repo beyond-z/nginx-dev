@@ -10,6 +10,7 @@ services:
       - rubycas-server_frontend
       - canvas-lms_frontend
       - beyondz-platform_frontend
+      - canvas-lms-js-css_default
 
 networks:
   # Bind to the external networks so that nginx can talk to the other using their 
@@ -20,5 +21,7 @@ networks:
   canvas-lms_frontend:
     external: true
   beyondz-platform_frontend:
+    external: true
+  canvas-lms-js-css_default:
     external: true
 
