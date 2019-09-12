@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 services:
   nginx_dev:
     image: nginx:latest
@@ -8,21 +8,10 @@ services:
     ports:
       - 80:80
     networks:
-      - rubycas-server_frontend
-      - canvas-lms_frontend
-      - beyondz-platform_frontend
-      - canvas-lms-js-css_default
+      - bravendev
 
+# Note all Braven web app docker dev envs use this same network so they can talk to each other.
+# E.g. the hostname joinweb will resolve inside the ssoweb container if they are on the same docker network.
 networks:
-  # Bind to the external networks so that nginx can talk to the other using their 
-  # service names as hostnames. E.g. from inside the nginx container, the hostname ssoweb 
-  # needs to resolve to the ssoweb container.
-  rubycas-server_frontend:
-    external: true
-  canvas-lms_frontend:
-    external: true
-  beyondz-platform_frontend:
-    external: true
-  canvas-lms-js-css_default:
-    external: true
-
+  bravendev:
+    name: braven_dev_network
