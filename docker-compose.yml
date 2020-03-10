@@ -5,8 +5,11 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./log:/var/log/nginx
+      - ./platformweb-selfsigned.crt:/etc/ssl/certs/platformweb-selfsigned.crt
+      - ./platformweb-selfsigned.key:/etc/ssl/private/platformweb-selfsigned.key
     ports:
       - 80:80
+      - 443:443
     networks:
       - bravendev
 
