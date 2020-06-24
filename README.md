@@ -40,6 +40,9 @@ openssl req \
 
 2. Check the .crt and .key into src control.
 
-3. Then on a Mac open up Keychain Access app, click on Certificates on the left, drag your new `platformweb-selfsigned.crt` into there, double click it, expand the Trust section, change the setting to *"When using this certificate" : "Always Trust"*, close and type your computer password to save. 
+3. Update docker-compose.yml to map your new .crt and .key into the docker image as a volume. See the platformweb example in there.
 
-4. Update the `nginx.conf` to liston on port 443 and use your new self-signed key which you've told your local computer to trust. Just look at the platformweb config in there for an example
+4. Then on a Mac open up Keychain Access app, click on Certificates on the left, drag your new `platformweb-selfsigned.crt` into there, double click it, expand the Trust section, change the setting to *"When using this certificate" : "Always Trust"*, close and type your computer password to save. 
+
+5. Update the `nginx.conf` to liston on port 443 and use your new self-signed key which you've told your local computer to trust. Just look at the platformweb config in there for an example
+
