@@ -7,7 +7,31 @@ reference for the port numbers for each dev application.
 
 ## Troubleshooting
 Occasionally you'll get a `Bad Gateway nginx 1.17.4` error. Not sure why, but if you just restart the
-service using `./docker-compose/scripts/restart.sh` it should work.
+service using `./docker-compose/scripts/restart.sh` it should work. Also, make sure `platformweb` is 
+already running before restarting `nginx`. 
+
+If you see the following, or similar, error in the logs when running `docker-compose up`
+
+```
+nginx: [emerg] host not found in upstream "canvasweb" in /etc/nginx/nginx.conf:15
+```
+
+check your `/etc/hosts` files and make sure it contains the following:
+
+```
+127.0.0.1   ssoweb
+127.0.0.1   joinweb
+127.0.0.1   cssjsweb
+127.0.0.1   kitsweb
+127.0.0.1   canvasweb
+127.0.0.1   boosterweb
+127.0.0.1   boosterplatformweb
+127.0.0.1   nginx_dev
+127.0.0.1   platformweb
+127.0.0.1   bravenweb
+127.0.0.1   ltiweb
+127.0.0.1   canvascloud
+```
 
 ## SSL Support
 Sometimes it's useful to be able to use HTTPS/SSL in the local development environment.
